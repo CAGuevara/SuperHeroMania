@@ -7,13 +7,16 @@ import Home from './pages/Home'
 import './App.css';
 import HeroSearch from './pages/HeroSearch';
 import HeroList from './pages/HeroList';
-
+import userContext from './contexts/UserContext';
 
 const App = () => {
-
-  return (
+  // const user = useContext(userContext)
+  // console.log(user)
+   return (
     <div>
-        <Nav />
+        <userContext.Provider value={'Carmen'}>
+          <Nav />
+        </userContext.Provider>
         
         {/* <Footer/> */}
     </div>
