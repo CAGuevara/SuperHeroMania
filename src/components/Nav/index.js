@@ -11,21 +11,21 @@ const Nav = () => {
     return (
         <nav className="navbar navbar-light bg-light">
         <div className="container">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             <img src="/home.png" alt="" width="40" height="50"/>
-          </a>
-          <a className="navbar-brand" href="#">
+          </Link>
+          <Link className="navbar-brand" to="login">
             <img src="/iconLogin.png" alt="" width="40" height="54"/>
-          </a>
-          <a className="navbar-brand" href="#">
+          </Link>
+          <Link className="navbar-brand" to="character/List">
             <img src="/fraud.png" alt="" width="40" height="50"/>
-          </a>
-          <a className="navbar-brand" href="#">
+          </Link>
+          <Link className="navbar-brand" to="search">
             <img src="/search.png" alt="" width="40" height="50"/>
-          </a>
-          <a className="navbar-brand" href="#">
+          </Link>
+          <Link className="navbar-brand" to="shoppingCart">
             <img src="/scart.png" alt="" width="40" height="50"/>
-          </a>
+          </Link>
         </div>
       </nav>
 

@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useContext, useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Router } from 'react-router-dom';
 import Nav from './components/Nav';
-// import Login from './pages/Login'
+import Login from './pages/Login'
 import Home from './pages/Home'
 import './App.css';
 import HeroSearch from './pages/HeroSearch';
@@ -12,13 +12,14 @@ import userContext from './contexts/UserContext';
 const App = () => {
   // const user = useContext(userContext)
   // console.log(user)
-   return (
+  return (
     <div>
-        <userContext.Provider value={'Carmen'}>
+
+      <userContext.Provider value={'Carmen'}>
           <Nav />
-        </userContext.Provider>
-        
-        {/* <Footer/> */}
+      </userContext.Provider>
+
+      {/* <Footer/> */}
     </div>
   );
 }
