@@ -17,23 +17,23 @@ import './App.css';
 const App = () => {
   // const user = useContext(userContext)
   // console.log(user)
-  
-  const [user,setUser] = useState('')
-  
+
+  const [user, setUser] = useState('')
+
 
   return (
     <div>
 
       <userContext.Provider value={user}>
-       <Nav />
-       <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='login' element={<Login setUser={setUser}/>}/>
-        <Route path='character/List' element={<HeroList/>}/>
-        <Route path='character/Search' element={<HeroSearch/>}/>
-        <Route path='shoppingCart' element={<ShoppingCart/>}/>
+        <Nav />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='login' element={<Login setUser={setUser} />} />
+          <Route path='character/List' element={<HeroList />} />
+          <Route path='character/Search' element={<HeroSearch />} />
+          <Route path='shoppingCart' element={<ShoppingCart />} />
 
-      </Routes>   
+        </Routes>
 
       </userContext.Provider>
 
