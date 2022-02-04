@@ -1,38 +1,44 @@
 import { useState } from 'react';
-import './styles.css' 
+import { useNavigate } from 'react-router-dom'
+import './styles.css'
 
-const Login = ({ setUser}) => {
+const Login = ({ setUser }) => {
 
-    const[username, setUserName] = useState('')
+    const [username, setUserName] = useState('')
+    const navigate = useNavigate()
+
     const handleChange = e => {
         setUserName(e.target.value)
     }
 
-    const handleSubmit =e =>{
+    const handleSubmit = e => {
         e.preventDefault()
         setUser(username)
+        //redirect user to the Character List 
+        navigate('/')
     }
-    // console.log('testin props', setUser())
+  
     return (
         <form className='mx-auto border p-2 m-2' id="login-form" onSubmit={handleSubmit}>
             <div className="mb-3">
-                <label htmlFor="exampleInputUser1" 
-                className="form-label">User address</label>
-                <input 
-                    type="text" 
-                    className="form-control" 
-                    id="exampleInputUser1" 
+                <div id="userHelp" className="form-text">Type your User Name and Password to be able to access the rest of the Menu.</div>
+                <label htmlFor="exampleInputUser1"
+                    className="form-label">User address</label>
+                <input
+                    type="text"
+                    className="form-control"
+                    id="exampleInputUser1"
                     aria-describedby="userHelp"
                     value={username}
-                    onChange={handleChange} 
+                    onChange={handleChange}
                 />
-                <div id="userHelp" className="form-text">We'll never share your username with anyone else.</div>
+                
             </div>
             <div className="mb-3">
                 <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                 <input type="password" className="form-control" id="exampleInputPassword1" />
             </div>
-      
+
             <button type="submit" className="btn btn-primary">Submit</button>
         </form>
     );
