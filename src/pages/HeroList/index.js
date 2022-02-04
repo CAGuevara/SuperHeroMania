@@ -2,10 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import { useContext, useState, useEffect } from 'react'
 import ReactPaginate from 'react-paginate'
+import './styles.css'
+
 
 const HeroList = () => {
     const [sHeroCharacter, setSHeroCharacter] = useState([])
-    const itemsPerPage = 7;
+    const itemsPerPage = 6;
 
     useEffect(() => {
         fetchCharacter()
@@ -36,41 +38,53 @@ const HeroList = () => {
         const endOffset = itemOffset + itemsPerPage;
         console.log(`Loading sHeroCharacter from ${itemOffset} to ${endOffset}`);
         setCurrentCharacter(sHeroCharacter.slice(itemOffset, endOffset));
-        
+
         if (currentCharacter) currPageCharacter()
         setPageCount(Math.ceil(sHeroCharacter.length / itemsPerPage));
 
     }, [itemOffset, itemsPerPage]);
 
-const currPageCharacter =() => {
-    try {
-        const heroArr = []
-        axios.all(sHeroCharacter.map(async (url) => {
-            const response = await axios.get(url)
-            // console.log(response.data)
-            heroArr.push(response.data)
-            setCurrentCharacter(heroArr.flat())
-            // setCurrentPokemon([...currentPokemon, response.data])
-        }))
+    const currPageCharacter = () => {
+        try {
+            const heroArr = []
+            axios.all(sHeroCharacter.map(async (url) => {
+                const response = await axios.get(url)
+                // console.log(response.data)
+                heroArr.push(response.data)
+                setCurrentCharacter(heroArr.flat())
+                // setCurrentPokemon([...currentPokemon, response.data])
+            }))
 
-    }catch (error) {
+        } catch (error) {
+
+        }
 
     }
-
-}
 
 
     const Items = () => {
         return (
-            <>
+            <div id='card-container'>
                 {currentCharacter &&
                     currentCharacter.map((item) => (
-                        <div>
-                            <h3>{item.name}</h3>
-                            <img src={item.image.url} />
+                        <div className="card hero-card">
+                            <img src={item.image.url} className="card-img-top" alt="..."/>
+                                <div className="card-body">
+                                    <h5 className="card-title">{item.name}</h5>
+                                    <p className="card-text">{item.work.occupation}</p>
+                                    <a href="#" className="btn btn-primary">Add To Cart</a>
+                                </div>
                         </div>
+
+
+
+                        // <div>
+                        //     <h3>{item.name}</h3>
+                        //     <img src={item.image.url} />
+                        //     <p> {item.work.occupation}</p>
+                        // </div>
                     ))}
-            </>
+            </div>
         );
     }
 
@@ -83,7 +97,7 @@ const currPageCharacter =() => {
         setItemOffset(newOffset);
     };
 
-console.log(currentCharacter)
+    console.log(currentCharacter)
 
     return (
         <div>
