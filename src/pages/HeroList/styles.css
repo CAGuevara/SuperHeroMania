@@ -7,9 +7,12 @@
 .hero-card{
     /* background-color: blue; */
     width: 20rem;
+    border-radius: 20px;
 }
 #pict-set{
     height: 30rem;
+    padding: 1rem;
+    border-radius: 20px;
 }
 #detail-container{
     display: flex;

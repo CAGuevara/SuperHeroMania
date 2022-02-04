@@ -7,14 +7,12 @@ import './styles.css'
 
 const HeroList = () => {
     const [sHeroCharacter, setSHeroCharacter] = useState([])
+    const [addCart, setAddCart] = useState([]) 
     const itemsPerPage = 6;
-
-    useEffect(() => {
-        fetchCharacter()
-    }, [])
 
     const fetchCharacter = async () => {
         try {
+            console.log('we are in fetchc character')
             const response = await axios.get("https://www.superheroapi.com/api.php/10158975138651775/search/man")
             setSHeroCharacter(response.data.results)
             // console.log(response.data.results)
@@ -22,45 +20,25 @@ const HeroList = () => {
             // console.log(sHeroCharacter[0]?.image?.url)
         } catch (error) {
             console.log(error)
+        } finally{
+             setPageCount(Math.ceil(65/ itemsPerPage));
         }
     }
-    // const listOfCharacters = sHeroCharacter.map((hero, i) => <li key={i}>{hero.name}</li>)
+
 
     // We start with an empty list of sHeroCharacter.
     const [currentCharacter, setCurrentCharacter] = useState(null);
     const [pageCount, setPageCount] = useState(0);
-    // Here we use item offsets; we could also use page offsets
-    // following the API or data you're working with.
+
     const [itemOffset, setItemOffset] = useState(0);
 
     useEffect(() => {
-        // Fetch sHeroCharacter from another resources.
+        fetchCharacter()
         const endOffset = itemOffset + itemsPerPage;
         console.log(`Loading sHeroCharacter from ${itemOffset} to ${endOffset}`);
         setCurrentCharacter(sHeroCharacter.slice(itemOffset, endOffset));
-
-        if (currentCharacter) currPageCharacter()
-        setPageCount(Math.ceil(sHeroCharacter.length / itemsPerPage));
-
-    }, [itemOffset, itemsPerPage]);
-
-    const currPageCharacter = () => {
-        try {
-            const heroArr = []
-            axios.all(sHeroCharacter.map(async (url) => {
-                const response = await axios.get(url)
-                // console.log(response.data)
-                heroArr.push(response.data)
-                setCurrentCharacter(heroArr.flat())
-                // setCurrentPokemon([...currentPokemon, response.data])
-            }))
-
-        } catch (error) {
-
-        }
-
-    }
-
+        console.log(sHeroCharacter)
+    }, [itemOffset, itemsPerPage,pageCount]);
 
     const Items = () => {
         return (
@@ -73,19 +51,18 @@ const HeroList = () => {
                                     <h5 className="card-title">{item.name}</h5>
                                     <p className="card-text">{item.work.occupation}</p>
                                     <div id='detail-container'>
-                                    <a href="#" className="btn btn-primary">Add To Cart</a>
+                                    {
+                                        (item.powerstats.power!="null") ? 
+                                        <button className="btn btn-primary">Add To Cart</button>
+                                        :
+                                        <button className="btn btn-primary" disabled>Sold-Out</button>
+                                        
+                                    }    
                                     <a href="#" id="price" className="btn btn-primary">Price : ${(item.powerstats.power!="null")? item.powerstats.power : "Sold-Out" }</a>
                                     </div>
                                 </div>
                         </div>
 
-
-
-                        // <div>
-                        //     <h3>{item.name}</h3>
-                        //     <img src={item.image.url} />
-                        //     <p> {item.work.occupation}</p>
-                        // </div>
                     ))}
             </div>
         );
@@ -99,8 +76,6 @@ const HeroList = () => {
         );
         setItemOffset(newOffset);
     };
-
-    console.log(currentCharacter)
 
     return (
         <div>
