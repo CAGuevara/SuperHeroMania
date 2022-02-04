@@ -23,7 +23,7 @@ const Login = ({ setUser }) => {
             <div className="mb-3">
                 <div id="userHelp" className="form-text">Type your User Name and Password to be able to access the rest of the Menu.</div>
                 <label htmlFor="exampleInputUser1"
-                    className="form-label">User address</label>
+                    className="form-label">Username</label>
                 <input
                     type="text"
                     className="form-control"

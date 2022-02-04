@@ -19,7 +19,7 @@ const Nav = () => {
           !user
             ?
             <Link className="navbar-brand" to="login">
-              <img src="/iconLogin.png" alt="" width="40" height="54" />
+              <img src="/iconLogin.png" alt="" width="50" height="64" />
             </Link>
             :
             <>

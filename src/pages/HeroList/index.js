@@ -4,6 +4,7 @@ import { useContext, useState, useEffect } from 'react'
 
 const HeroList = () => {
     const [sHeroCharacter, setSHeroCharacter] = useState([])
+    
 
     useEffect(() => {
         fetchCharacter()
@@ -20,11 +21,13 @@ const HeroList = () => {
             console.log(error)
         }
     }
-
+    const listOfCharacters = sHeroCharacter.map((hero, i) => <li key={i}>{hero.name}</li>)
     return (
         <div>
 
-            {
+            CHARACTERES
+            {listOfCharacters}
+            {/* {
                 sHeroCharacter.map(hero => {
                     return (
                         <div>
@@ -33,7 +36,7 @@ const HeroList = () => {
                         </div>
                     )
                 })
-            }
+            } */}
 
 
         </div>
