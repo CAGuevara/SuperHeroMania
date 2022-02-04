@@ -68,11 +68,14 @@ const HeroList = () => {
                 {currentCharacter &&
                     currentCharacter.map((item) => (
                         <div className="card hero-card">
-                            <img src={item.image.url} className="card-img-top" alt="..."/>
+                            <img id= "pict-set"src={item.image.url} className="card-img-top" alt="..."/>
                                 <div className="card-body">
                                     <h5 className="card-title">{item.name}</h5>
                                     <p className="card-text">{item.work.occupation}</p>
+                                    <div id='detail-container'>
                                     <a href="#" className="btn btn-primary">Add To Cart</a>
+                                    <a href="#" id="price" className="btn btn-primary">Price : ${(item.powerstats.power!="null")? item.powerstats.power : "Sold-Out" }</a>
+                                    </div>
                                 </div>
                         </div>
 

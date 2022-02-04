@@ -3,10 +3,18 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
-    border-radius:5%;
 }
 .hero-card{
     /* background-color: blue; */
     width: 20rem;
 }
-
+#pict-set{
+    height: 30rem;
+}
+#detail-container{
+    display: flex;
+    justify-content: space-around;
+}
+#price{
+    background-color: red;
+}
