@@ -18,31 +18,27 @@ const HeroSearch = () => {
     const handleSubmit = e => {
         e.preventDefault()
         searchCharacter(stringSearch)
-        // searchCharacter(superHeroID)
 
     }
     // useEffect(() => {
-    //     
+    //     searchCharacter(stringSearch)
     // }, [stringSearch])
 
     const searchCharacter = async (stringSearch) => {
-        // console.log('inside search',stringSearch)
+ 
         try {
             const response = await axios.get(`https://www.superheroapi.com/api.php/10158975138651775/search/${stringSearch}`)
             setFoundCharacter(response.data.results)
-            // console.log(foundCharacter[0].image.url)
-            // console.log(foundCharacter[0].image?.url)
-            console.log('first time',foundCharacter)
-            // console.log(foundCharacter)
+
         } catch (error) {
             console.log(error)
         }
     }
-
+    
     return (
 
         <div>
-            {console.log(foundCharacter)}
+           
             <div className="ui form success">
                 <div className="field">
                     <label>Type the Name of the Character you are looking for</label>
@@ -53,6 +49,7 @@ const HeroSearch = () => {
                     return searchCharacter(stringSearch)
                 }}>Search</button>
             </div>
+             {console.log('inside return',foundCharacter)}
             {
 
                     foundCharacter.map(item => {
@@ -60,10 +57,10 @@ const HeroSearch = () => {
                             
                             <div className="card">
                             <div className="image">
-                              <img src="/images/avatar2/large/matthew.png"/>
+                              <img src={item.image.url}/>
                             </div>
                             <div className="content">
-                              <div className="header">Matt Giampietro</div>
+                              <div className="header">{item.name}</div>
                               <div className="meta">
                                 <a>Friends</a>
                               </div>
