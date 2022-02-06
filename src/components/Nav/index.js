@@ -9,7 +9,7 @@ const Nav = () => {
   const user = useContext(userContext)
   console.log('nav : ', user)
   return (
-    <nav className="navbar navbar-light bg-light">
+    <nav className="navbar sticky-top navbar-light bg-light">
       <div className="container">
         <Link className="navbar-brand" to="/">
           <img src="/home.png" alt="" width="40" height="50" />

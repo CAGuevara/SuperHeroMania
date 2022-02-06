@@ -36,46 +36,64 @@ const HeroSearch = () => {
         }
     }
 
+    const imgCard = document.querySelector(".image");
+
+
+    // imgCard.addEventListener("mouseenter",()=> {
+    //     imgCard.classList.add("blur")
+    // })
+    // imgCard.addEventListener("mouseout",()=>{
+    //     imgCard.classList.remove("blur")
+    // })
+
     return (
 
         <div>
+            <div id="search-container">
+                <div className="ui form success">
+                    <div className="field">
+                        <label>Type the Name of the Character you are looking for</label>
+                        <input id="search-field" value={stringSearch} onChange={handleChange} type="text" />
+                    </div>
 
-            <div className="ui form success">
-                <div className="field">
-                    <label>Type the Name of the Character you are looking for</label>
-                    <input value={stringSearch} onChange={handleChange} type="text" />
+                    <button id="search-button" className="ui submit button" onClick={() => {
+                        return searchCharacter(stringSearch)
+                    }}>Search</button>
                 </div>
-
-                <button className="ui submit button" onClick={() => {
-                    return searchCharacter(stringSearch)
-                }}>Search</button>
             </div>
             {console.log('inside return', foundCharacter)}
-            {
-                foundCharacter.map(item => {
-                    return (
-                        <div id='card-container'>
-                        <div className="card hero-card">
-                            <img id= "pict-set"src={item.image.url} className="card-img-top" alt="..."/>
-                                <div className="card-body">
-                                    <h5 className="card-title">{item.name}</h5>
-                                    <p className="card-text">{item.work.occupation}</p>
-                                    <div id='detail-container'>
-                                    {
-                                        (item.powerstats.power!="null") ? 
-                                        <button className="btn btn-primary">Add To Cart</button>
-                                        :
-                                        <button className="btn btn-primary" disabled>Sold-Out</button>
-                                        
-                                    }    
-                                    <a href="#" id="price" className="btn btn-primary">Price : ${(item.powerstats.power!="null")? item.powerstats.power : "Sold-Out" }</a>
+            <div id='card-container'>
+                {
+                    foundCharacter.map(item => {
+                        return (
+
+                            <div id='card-container'>
+                                <div className="card hero-card">
+                                    <img id="pict-set" src={item.image.url} className="card-img-top" alt="..." />
+                                    <div className="card-body">
+                                        <h5 className="card-title">{item.name}</h5>
+                                        <p className="card-text">{item.work.occupation}</p>
+                                        <div id='detail-container'>
+                                            {
+                                                (item.powerstats.power != "null") ?
+                                                    <button className="btn btn-primary">Add To Cart</button>
+                                                    :
+                                                    <button className="btn btn-primary" disabled>Sold-Out</button>
+
+                                            }
+                                            <a href="#" id="price" className="btn btn-primary">Price : ${(item.powerstats.power != "null") ? item.powerstats.power : "Sold-Out"}</a>
+                                        </div>
                                     </div>
                                 </div>
-                        </div>
-                    </div>
-                    )
-                })
-            }
+                            </div>
+
+
+
+                        )
+                    })
+
+                }
+            </div>
 
         </div>
     );

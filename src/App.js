@@ -19,7 +19,7 @@ const App = () => {
   // console.log(user)
 
   const [user, setUser] = useState('')
-
+ const [cart, setCart] = useState([])
 
 
   return (
