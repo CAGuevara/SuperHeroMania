@@ -33,13 +33,11 @@ const HeroSearch = ({cart, setCart}) => {
             console.log(error)
         }
     }
-    // const imgCard = document.querySelector(".image");
 
+
+    //function to add items to the shopping cart 
     const addToCart = (itemsInCart) =>{
-        // console.log("We added", itemsInCart)
         setCart([...cart, itemsInCart])
-        // console.log('hoping for Answer', cart)
-
     }
 
     return (
@@ -59,7 +57,7 @@ const HeroSearch = ({cart, setCart}) => {
             </div>
             {/* {console.log('inside return', foundCharacter)} */}
             <div id='card-container'>
-                {
+                { 
                     foundCharacter.map(item => {
                         return (
 

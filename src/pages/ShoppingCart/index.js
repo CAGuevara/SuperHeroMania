@@ -1,12 +1,21 @@
 import React from 'react';
+import { useContext, useState, useEffect } from 'react'
 import './styles.css'
 
 const ShoppingCart = ({ cart, setCart }) => {
     let cartTotal = 0;
     let qty = 1;
+
+    //Function to remove items from Shopping Cart
+    const removeFromCart = (item) =>{
+        console.log("We need to Remove", item)
+        let  cart1 = [... cart];
+        cart1 = cart.filter((t) => t !== item )
+        setCart([...cart1])
+    }
+
     return (
         <div>
-
             <div id='card-container'>
                 {
                     cart.map(item => {
@@ -24,7 +33,7 @@ const ShoppingCart = ({ cart, setCart }) => {
                                                 <label>Qty</label>
                                                 <input id="qty-field" value={qty} type="text" />
                                             </div>
-                                            <button className="btn btn-primary">Remove</button>
+                                            <button className="btn btn-primary" onClick={()=> removeFromCart(item)}>Remove</button>
                                             <a href="#" id="price" className="btn btn-primary">Price : ${item.powerstats.power}</a>
                                            
                                         </div>
