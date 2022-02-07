@@ -11,23 +11,17 @@ const HeroList = ({cart, setCart}) => {
     const itemsPerPage = 6;
 
 
+// Adding Items to Cart 
     const addToCart = (itemsInCart) =>{
-        console.log("We added", itemsInCart)
         setCart([...cart, itemsInCart])
-        console.log('hoping for Answer', cart)
-
     }
-
 
 
     const fetchCharacter = async () => {
         try {
-            console.log('we are in fetchc character')
             const response = await axios.get("https://www.superheroapi.com/api.php/10158975138651775/search/man")
             setSHeroCharacter(response.data.results)
-            // console.log(response.data.results)
-            // console.log(sHeroCharacter[0]?.name)
-            // console.log(sHeroCharacter[0]?.image?.url)
+            
         } catch (error) {
             console.log(error)
         } finally{
@@ -35,20 +29,28 @@ const HeroList = ({cart, setCart}) => {
         }
     }
 
- 
+    // const addingQty = () =>{
+    //     let qty = 0;
+    //     const newHero = Object.assign({}, sHeroCharacter)
+    //     newHero[sHeroCharacter.qty] = qty;
+    //     // console.log('ensayo', newHero.qty)
+    //     setSHeroCharacter(newHero)
+    //     console.log(sHeroCharacter.qty)
+    // } 
 
-    // We start with an empty list of sHeroCharacter.
+
     const [currentCharacter, setCurrentCharacter] = useState(null);
     const [pageCount, setPageCount] = useState(0);
-
     const [itemOffset, setItemOffset] = useState(0);
 
     useEffect(() => {
         fetchCharacter()
+       
         const endOffset = itemOffset + itemsPerPage;
-        console.log(`Loading sHeroCharacter from ${itemOffset} to ${endOffset}`);
+        // console.log(`Loading sHeroCharacter from ${itemOffset} to ${endOffset}`);
         setCurrentCharacter(sHeroCharacter.slice(itemOffset, endOffset));
         // console.log(sHeroCharacter)
+        
     }, [itemOffset, itemsPerPage,pageCount]);
 
     const Items = () => {

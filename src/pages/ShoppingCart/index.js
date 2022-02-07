@@ -14,6 +14,12 @@ const ShoppingCart = ({ cart, setCart }) => {
         setCart([...cart1])
     }
 
+
+    
+    const checkOut = () => {
+    console.log ("total amount owed")
+    }
+
     return (
         <div>
             <div id='card-container'>
