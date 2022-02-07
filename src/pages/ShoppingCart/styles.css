@@ -1,0 +1,18 @@
+
+#cart-container{
+    display: flex;
+    justify-content: space-around;
+    gap: 5px;
+}
+
+#qty{
+    width: 15px;
+    height: 100%;
+}
+#qty-field{
+    width: 30px;
+    height: 100%;
+}
+
+
+/* onChange={handleChange} */

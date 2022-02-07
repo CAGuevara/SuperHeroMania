@@ -1,7 +1,9 @@
 import React from 'react';
+import './styles.css'
 
 const ShoppingCart = ({ cart, setCart }) => {
     let cartTotal = 0;
+    let qty = 1;
     return (
         <div>
 
@@ -17,9 +19,14 @@ const ShoppingCart = ({ cart, setCart }) => {
                                     <div className="card-body">
                                         <h5 className="card-title">{item.name}</h5>
                                         {/* <p className="card-text">{item.work.occupation}</p> */}
-                                        <div id='detail-container'>
+                                        <div id='cart-container'>
+                                             <div id='qty' className="field">
+                                                <label>Qty</label>
+                                                <input id="qty-field" value={qty} type="text" />
+                                            </div>
                                             <button className="btn btn-primary">Remove</button>
                                             <a href="#" id="price" className="btn btn-primary">Price : ${item.powerstats.power}</a>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -30,7 +37,7 @@ const ShoppingCart = ({ cart, setCart }) => {
             </div>
             <div>
                 <h1>
-                Total Amount : {cartTotal}
+                    Total Amount : {cartTotal}
                 </h1>
             </div>
 
