@@ -58,7 +58,7 @@ const HeroSearch = ({cart, setCart}) => {
             {/* {console.log('inside return', foundCharacter)} */}
             <div id='card-container'>
                 { 
-                    foundCharacter.map(item => {
+                    foundCharacter && foundCharacter.map(item => {
                         return (
 
                             <div id='card-container'>
