@@ -21,6 +21,10 @@ const App = () => {
   const [user, setUser] = useState('')
  const [cart, setCart] = useState([])
 
+    // const addToCart = (itemsInCart) =>{
+    //     console.log("We added", itemsInCart)
+    //     console.log(cart)
+    // }
 
   return (
     <div>
@@ -30,9 +34,9 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='login' element={<Login setUser={setUser} />} />
-          <Route path='character/List' element={<HeroList />} />
-          <Route path='character/Search' element={<HeroSearch />} />
-          <Route path='shoppingCart' element={<ShoppingCart />} />
+          <Route path='character/List' element={<HeroList cart={cart} setCart={setCart}/>} />
+          <Route path='character/Search' element={<HeroSearch cart={cart} setCart={setCart} />} />
+          <Route path='shoppingCart' element={<ShoppingCart cart={cart} setCart={setCart}/>} />
 
         </Routes>
 

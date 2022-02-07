@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useContext, useState, useEffect } from 'react'
 import './styles.css'
 
-const HeroSearch = () => {
+const HeroSearch = ({cart, setCart}) => {
 
     const [foundCharacter, setFoundCharacter] = useState([])
     const [stringSearch, setStringSearch] = useState('')
@@ -21,9 +21,7 @@ const HeroSearch = () => {
         searchCharacter(stringSearch)
 
     }
-    // useEffect(() => {
-    //     searchCharacter(stringSearch)
-    // }, [stringSearch])
+
 
     const searchCharacter = async (stringSearch) => {
 
@@ -35,16 +33,14 @@ const HeroSearch = () => {
             console.log(error)
         }
     }
+    // const imgCard = document.querySelector(".image");
 
-    const imgCard = document.querySelector(".image");
+    const addToCart = (itemsInCart) =>{
+        // console.log("We added", itemsInCart)
+        setCart([...cart, itemsInCart])
+        // console.log('hoping for Answer', cart)
 
-
-    // imgCard.addEventListener("mouseenter",()=> {
-    //     imgCard.classList.add("blur")
-    // })
-    // imgCard.addEventListener("mouseout",()=>{
-    //     imgCard.classList.remove("blur")
-    // })
+    }
 
     return (
 
@@ -61,7 +57,7 @@ const HeroSearch = () => {
                     }}>Search</button>
                 </div>
             </div>
-            {console.log('inside return', foundCharacter)}
+            {/* {console.log('inside return', foundCharacter)} */}
             <div id='card-container'>
                 {
                     foundCharacter.map(item => {
@@ -76,7 +72,7 @@ const HeroSearch = () => {
                                         <div id='detail-container'>
                                             {
                                                 (item.powerstats.power != "null") ?
-                                                    <button className="btn btn-primary">Add To Cart</button>
+                                                    <button className="btn btn-primary" onClick={()=> addToCart(item)}>Add To Cart</button>
                                                     :
                                                     <button className="btn btn-primary" disabled>Sold-Out</button>
 

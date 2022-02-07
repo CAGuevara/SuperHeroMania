@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Nav = () => {
 
   const user = useContext(userContext)
-  console.log('nav : ', user)
+  // console.log('nav : ', user)
   return (
     <nav className="navbar sticky-top navbar-light bg-light">
       <div className="container">

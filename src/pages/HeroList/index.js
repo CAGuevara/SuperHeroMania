@@ -3,12 +3,22 @@ import axios from 'axios';
 import { useContext, useState, useEffect } from 'react'
 import ReactPaginate from 'react-paginate'
 import './styles.css'
+import App from '../../App';
 
-
-const HeroList = () => {
+const HeroList = ({cart, setCart}) => {
     const [sHeroCharacter, setSHeroCharacter] = useState([])
     const [addCart, setAddCart] = useState([]) 
     const itemsPerPage = 6;
+
+
+    const addToCart = (itemsInCart) =>{
+        console.log("We added", itemsInCart)
+        setCart([...cart, itemsInCart])
+        console.log('hoping for Answer', cart)
+
+    }
+
+
 
     const fetchCharacter = async () => {
         try {
@@ -25,6 +35,7 @@ const HeroList = () => {
         }
     }
 
+ 
 
     // We start with an empty list of sHeroCharacter.
     const [currentCharacter, setCurrentCharacter] = useState(null);
@@ -37,7 +48,7 @@ const HeroList = () => {
         const endOffset = itemOffset + itemsPerPage;
         console.log(`Loading sHeroCharacter from ${itemOffset} to ${endOffset}`);
         setCurrentCharacter(sHeroCharacter.slice(itemOffset, endOffset));
-        console.log(sHeroCharacter)
+        // console.log(sHeroCharacter)
     }, [itemOffset, itemsPerPage,pageCount]);
 
     const Items = () => {
@@ -53,7 +64,7 @@ const HeroList = () => {
                                     <div id='detail-container'>
                                     {
                                         (item.powerstats.power!="null") ? 
-                                        <button className="btn btn-primary">Add To Cart</button>
+                                        <button className="btn btn-primary" onClick={()=> addToCart(item)}>Add To Cart</button>
                                         :
                                         <button className="btn btn-primary" disabled>Sold-Out</button>
                                         
@@ -79,8 +90,6 @@ const HeroList = () => {
 
     return (
         <div>
-
-
             <Items />
             <ReactPaginate
                 nextLabel="next >"
