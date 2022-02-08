@@ -8,12 +8,18 @@ import App from '../../App';
 const HeroList = ({cart, setCart}) => {
     const [sHeroCharacter, setSHeroCharacter] = useState([])
     const [addCart, setAddCart] = useState([]) 
+    const [addQtyCart,setAddQtyCart] = useState([])
     const itemsPerPage = 6;
 
 
 // Adding Items to Cart 
     const addToCart = (itemsInCart) =>{
-        setCart([...cart, itemsInCart])
+        const exist = cart.find( x => x.id === itemsInCart.id);
+        if (exist) {
+            setCart(cart.map( x=> x.id === itemsInCart.id ? {...exist,qty:exist.qty+1}:x))
+        }else {
+            setCart([...cart,{...itemsInCart,qty : 1}])
+        }
     }
 
 
@@ -28,16 +34,6 @@ const HeroList = ({cart, setCart}) => {
              setPageCount(Math.ceil(65/ itemsPerPage));
         }
     }
-
-    // const addingQty = () =>{
-    //     let qty = 0;
-    //     const newHero = Object.assign({}, sHeroCharacter)
-    //     newHero[sHeroCharacter.qty] = qty;
-    //     // console.log('ensayo', newHero.qty)
-    //     setSHeroCharacter(newHero)
-    //     console.log(sHeroCharacter.qty)
-    // } 
-
 
     const [currentCharacter, setCurrentCharacter] = useState(null);
     const [pageCount, setPageCount] = useState(0);

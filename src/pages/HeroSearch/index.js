@@ -36,9 +36,19 @@ const HeroSearch = ({cart, setCart}) => {
 
 
     //function to add items to the shopping cart 
+    // const addToCart = (itemsInCart) =>{
+    //     setCart([...cart, itemsInCart])
+    // }
+
     const addToCart = (itemsInCart) =>{
-        setCart([...cart, itemsInCart])
+        const exist = cart.find( x => x.id === itemsInCart.id);
+        if (exist) {
+            setCart(cart.map( x=> x.id === itemsInCart.id ? {...exist,qty:exist.qty+1}:x))
+        }else {
+            setCart([...cart,{...itemsInCart,qty : 1}])
+        }
     }
+
 
     return (
 

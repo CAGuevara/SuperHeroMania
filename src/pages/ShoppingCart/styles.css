@@ -1,5 +1,5 @@
 
-#cart-container{
+#cart-containe{
     display: flex;
     justify-content: space-around;
     gap: 5px;
@@ -14,5 +14,29 @@
     height: 100%;
 }
 
+#empty-cart{
+    width: 100%;
+    margin: 10rem;
+    margin-left: 40rem;
+}
 
+/* #shopping-cart{
+    width: 100;
+    display: flex;
+    justify-content:space-around;
+} */
+/* #card-container{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+} */
+/* #checkout-legend{
+    width: 10%;
+    margin: 2rem;
+} */
+/* 
+#side-check{
+    display: flex;
+  align-items: center;
+} */
 /* onChange={handleChange} */

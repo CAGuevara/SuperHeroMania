@@ -21,7 +21,7 @@ const Login = ({ setUser }) => {
     return (
         <form className='mx-auto border p-2 m-2' id="login-form" onSubmit={handleSubmit}>
             <div className="mb-3">
-                <div id="userHelp" className="form-text">Type your User Name and Password to be able to access the rest of the Menu.</div>
+                {/* <div id="userHelp" className="form-text">Type your User Name and Password.</div> */}
                 <label htmlFor="exampleInputUser1"
                     className="form-label">Username</label>
                 <input
@@ -40,6 +40,8 @@ const Login = ({ setUser }) => {
             </div>
 
             <button type="submit" className="btn btn-primary">Submit</button>
+
+            <h3 id="reg-note">Registration will give you access to review and purchase our products</h3>
         </form>
     );
 }
