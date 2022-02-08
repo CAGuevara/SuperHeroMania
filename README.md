@@ -48,7 +48,7 @@ Key : 10158975138651775	- string	Required.
 
 Acknowledgements
 
-Josh Kelly for all the help and GOAT group for the wonderful Silence treatment in the breakout rooms :)
+Josh Kelly and Omar Hersi for all the help and the GOAT group for the wonderful silence treatment in the breakout rooms :)
 
 
 Author
